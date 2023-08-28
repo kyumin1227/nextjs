@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
             <a href="/read/2">css</a>
           </li>
         </ol>
+        {/* children은 path에 맞는 page가 들어가는 자리 */}
         {children}
         <ul>
           <li>
