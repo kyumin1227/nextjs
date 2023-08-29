@@ -1,4 +1,5 @@
 import "./globals.css";
+import Link from "next/link";
 
 export const metadata = {
   title: "Web tutorials",
@@ -10,24 +11,24 @@ export default function RootLayout({ children }) {
     <html>
       <body>
         <h1>
-          <a href="/">WEB</a>
+          <Link href="/">WEB</Link>
         </h1>
         <ol>
           <li>
-            <a href="/read/1">html</a>
+            <Link href="/read/1">html</Link>
           </li>
           <li>
-            <a href="/read/2">css</a>
+            <Link href="/read/2">css</Link>
           </li>
         </ol>
         {/* children은 path에 맞는 page가 들어가는 자리 */}
         {children}
         <ul>
           <li>
-            <a href="/create">Create</a>
+            <Link href="/create">Create</Link>
           </li>
           <li>
-            <a href="/update/1">Update</a>
+            <Link href="/update/1">Update</Link>
           </li>
           <li>
             <input type="button" value="delete" />
