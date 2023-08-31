@@ -9,7 +9,10 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   // 서버에서 동적으로 생성하여 정적 파일을 전달
-  const resp = await fetch("http://localhost:9999/topics");
+  const resp = await fetch("http://localhost:9999/topics", {
+    // next: { revalidate: 10 }, // cache를 10초만 유지
+    cache: "no-store", // cache를 저장하지 않음
+  });
   const topics = await resp.json();
   return (
     <html>
