@@ -1,4 +1,5 @@
 // "use client";
+import { Control } from "./Control";
 import "./globals.css";
 import Link from "next/link";
 
@@ -9,7 +10,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   // 서버에서 동적으로 생성하여 정적 파일을 전달
-  const resp = await fetch("http://localhost:9999/topics", {
+  const resp = await fetch(process.env.NEXT_PUBLIC_API_URL + "topics", {
     // next: { revalidate: 10 }, // cache를 10초만 유지
     cache: "no-store", // cache를 저장하지 않음
   });
@@ -31,17 +32,7 @@ export default async function RootLayout({ children }) {
         </ol>
         {/* children은 path에 맞는 page가 들어가는 자리 */}
         {children}
-        <ul>
-          <li>
-            <Link href="/create">Create</Link>
-          </li>
-          <li>
-            <Link href="/update/1">Update</Link>
-          </li>
-          <li>
-            <input type="button" value="delete" />
-          </li>
-        </ul>
+        <Control />
       </body>
     </html>
   );
